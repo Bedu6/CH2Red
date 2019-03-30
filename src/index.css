@@ -1,0 +1,23 @@
+.flex{
+	display: flex;
+}
+
+.align_center{ /*Vertical*/
+	align-items: center;
+}
+
+.ml{
+	margin-left: 20px;
+}
+
+.mr{
+	margin-right: 10px;
+}
+
+.justify_center{
+	justify-content: center;
+}
+
+a,link{
+	cursor: pointer;
+}
