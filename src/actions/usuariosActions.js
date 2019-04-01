@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TRAER_USUARIOS, ERROR } from '../types/usuariosTypes.js';
+import { TRAER_USUARIOS, ERROR, CARGANDO } from '../types/usuariosTypes.js';
 
 export const traerUsuarios = () => async (dispatch) => {
 
