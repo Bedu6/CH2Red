@@ -1,11 +1,12 @@
-import { TRAER_USUARIOS, ERROR } from '../types/usuariosTypes.js';
+import { TRAER_USUARIOS, ERROR, CARGANDO, CAMBIO_NOMBRE, CAMBIO_APELLIDO_PATERNO,
+ CAMBIO_APELLIDO_MATERNO, CAMBIO_EDAD, AGREGADO, EDITADO } from '../types/usuariosTypes.js';
 
 const INITIAL_STATE = {
     usuarios: [],
     cargando: false,
     error: '',
     nombre: '',
-    apellidos: {
+    apellido: {
         paterno: '',
         materno: ''
     }, 
@@ -16,8 +17,8 @@ export default (state = INITIAL_STATE, action) =>{
 
 switch (action.type){
    
-   case TRAER_COMENTARIOS:
-       return{ ...state, comentarios: action.payload, cargando: false };
+   case TRAER_USUARIOS:
+       return{ ...state, usuarios: action.payload, cargando: false };
    
    case ERROR:
        return{ ...state, error: action.payload, cargando: false };
@@ -25,17 +26,24 @@ switch (action.type){
    case CARGANDO:
        return{ ...state, cargando: true};
 
-   case CAMBIO_TITULO:
-       return{ ...state, titulo: action.payload, cargando: false};
+   case CAMBIO_NOMBRE:
+       return{ ...state, nombre: action.payload, cargando: false};
 
-   case CAMBIO_CONTENIDO:
-       return{ ...state, contenido: action.payload, cargando: false};
+   case CAMBIO_APELLIDO_PATERNO:
+       return{ ...state, apellido_paterno: action.payload, cargando: false};
+   
+   case CAMBIO_APELLIDO_MATERNO:
+       return{ ...state, apellido_materno: action.payload, cargando: false};
+   
+   case CAMBIO_EDAD:
+       return{ ...state, edad: action.payload, cargando: false};
 
    case AGREGADO:
-       return{ ...state, titulo: '', contenido: '', cargando: false, comentarios: []};
+       return{ ...state, nombre: '', apellido_paterno: '',
+       apellido_materno:'', edad: '', cargando: false, usuarios: []};
 
    case EDITADO:
-       return{ ...state, cargando: false, comentarios: []};
+       return{ ...state, cargando: false, usuarios: []};
    
    default: return state;
 }
