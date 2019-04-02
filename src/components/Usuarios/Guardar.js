@@ -25,8 +25,8 @@ class Guardar extends Component {
 
 	 localGuardar = (event) => {
 		const cuerpo = {
-			title: this.props.titulo,
-			body: this.props.contenido
+			nombre: this.props.nombre,
+			apellido_paterno: this.props.apellidos.paterno
 		}
 
 		const id = this.props.match.params.id
