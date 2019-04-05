@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Input, Icon, Button, Row } from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
 import { CAMBIO_NOMBRE, CAMBIO_APELLIDO_PATERNO,
-    CAMBIO_APELLIDO_MATERNO, CAMBIO_EDAD } from '../../types/usuariosTypes';
+         CAMBIO_APELLIDO_MATERNO, CAMBIO_EDAD     } from '../../types/usuariosTypes';
 import Cargando from '../General/Cargando';
 
 class Guardar extends Component {
 
 	componentDidMount() {
 		if(this.props.match.params.id)
-			this.props.traerUnComentario(this.props.match.params.id);
+			this.props.traerUsuario(this.props.match.params.id);
 		else {
 			this.props.cambioInput(CAMBIO_NOMBRE, '');
 			this.props.cambioInput(CAMBIO_APELLIDO_PATERNO	, '');
@@ -19,11 +19,13 @@ class Guardar extends Component {
 		}
 	}
 
-	 localCambioInput = (event, caso) => {
+	localCambioInput = (event, caso) => {
 		this.props.cambioInput(caso, event.target.value);
 	};
 
-	 localGuardar = (event) => {
+	/*
+
+	localGuardar = (event) => {
 		const cuerpo = {
 			nombre: this.props.nombre,
 			apellido_paterno: this.props.apellidos.paterno
@@ -34,57 +36,58 @@ class Guardar extends Component {
 		   this.props.editar(cuerpo, id);
 		else
 			this.props.agregar(cuerpo);
-	};
+	};*/
 
-render() {
-	return (
-		<div>
-			<br />
-			<div className='row'>
-				<Input
-					s={12}
-					label="Título"
-					value={ this.props.titulo }
-					onChange={
-						(event) => this.localCambioInput(event, CAMBIO_NOMBRE)
-					}
-				>
-					<Icon>input</Icon>
-				</Input>
-				<Input
-					s={12}
-					label="Contenido"
-					type='textarea'
-					value={ this.props.contenido }
-					onChange={
-						(event) => this.localCambioInput(event, CAMBIO_APELLIDO_PATERNO)
-					}
-				>
-					<Icon>account_circle</Icon>
-				</Input>
-			</div>
-			
-			{ this.props.mensaje }
-			<div className='center-align'>
-				<Button
-					className={
-						(this.props.cargando) ? 'disabled' : ''
-					}
-					waves='light'
-					onClick={ this.localGuardar }
-				>
-					Guardar
-					<Icon left>save</Icon>
-				</Button>
-			</div>
+	render() {
+		return (
+			<div>
+				<br />
+				<div className='row'>
+					<Input
+						s={6}
+						label="Nombre"
+						value={ this.props.nombre }
+						onChange={
+							(event) => this.localCambioInput(event, CAMBIO_NOMBRE)
+						}
+					>
+					</Input>
 
-			{ (this.props.cargando) ? <Cargando /> : '' }
-		</div>
-	)
-}
-	
+					<Input
+						s={6}
+						label="Apellido paterno"
+						value={ this.props.apellido_paterno }
+						onChange={
+							(event) => this.localCambioInput(event, CAMBIO_APELLIDO_PATERNO)
+						}
+					>
+					</Input>
+
+					<Input
+						s={6}
+						label="Apellido materno"
+						value={ this.props.apellido_materno }
+						onChange={
+							(event) => this.localCambioInput(event, CAMBIO_APELLIDO_MATERNO)
+						}
+					>
+					</Input>
+
+					<Input
+						s={6}
+						label="Edad"
+						value={ this.props.edad }
+						onChange={
+							(event) => this.localCambioInput(event, CAMBIO_EDAD)
+						}
+					>
+					</Input>
+				</div>
+			</div>
+		)
+	}	
 };
 
-const mapStateToProps = ({ usuarioReducers }) => usuarioReducers;
+const mapStateToProps = ({ usuariosReducer }) => usuariosReducer;
 
 export default connect(mapStateToProps, usuariosActions)(Guardar);
