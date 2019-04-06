@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Menu from './Menu.js';
+import Usuarios from './Usuarios/index.js';
+import UsuariosGuardar from './Usuarios/Guardar.js';
 
 class App extends Component {
   render() {
@@ -10,7 +12,8 @@ class App extends Component {
            <div>
               <Menu />
               <div className="container">
-                 
+                <Route exact path='/' component={Usuarios} />
+                <Route exact path='/usuarios/guardar' component={UsuariosGuardar} />
               </div>
            </div>
          </BrowserRouter>

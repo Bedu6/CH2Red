@@ -10,10 +10,22 @@
 	margin-left: 20px;
 }
 
+.mr{
+	margin-right: 10px;
+}
+
 .justify_center{
 	justify-content: center;
 }
 
 a,link{
 	cursor: pointer;
+}
+
+.btn_cancelar{
+	background: red;
+}
+
+.btn_guardar{
+	background: green;
 }
