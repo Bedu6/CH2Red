@@ -23,20 +23,24 @@ class Guardar extends Component {
 		this.props.cambioInput(caso, event.target.value);
 	};
 
-	/*
+	
 
 	localGuardar = (event) => {
-		const cuerpo = {
+		const usuario = {
 			nombre: this.props.nombre,
-			apellido_paterno: this.props.apellidos.paterno
+			pellidos: {
+				paterno: this.props.apellido_paterno,
+				materno: this.props.apellido_materno
+			},
+			edad: this.props.edad
 		}
 
 		const id = this.props.match.params.id
 		if(id)
-		   this.props.editar(cuerpo, id);
+		   this.props.editar(usuario, id);
 		else
-			this.props.agregar(cuerpo);
-	};*/
+			this.props.agregar(usuario);
+	};
 
 	render() {
 		return (
@@ -82,6 +86,10 @@ class Guardar extends Component {
 						}
 					>
 					</Input>
+				</div>
+				<div className="flex justify_center">
+					<Button className="btn btn_cancelar mr">Cancelar</Button>
+					<Button className="btn btn_guardar" onClick={ this.localGuardar } >Guardar</Button>
 				</div>
 			</div>
 		)

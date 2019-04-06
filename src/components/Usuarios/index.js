@@ -18,7 +18,7 @@ class index extends Component {
 
   	desplegar = () =>(
 	  this.props.usuarios.map((usuario, key) => (
-	   	<tr>
+	   	<tr key={key}>
 	      <td>{ usuario.nombre }</td>
 	      <td>{ usuario.apellidos.paterno }</td>
 	      <td>{ usuario.apellidos.materno }</td>

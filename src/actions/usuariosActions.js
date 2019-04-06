@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { TRAER_USUARIOS, ERROR, CARGANDO, CAMBIO_NOMBRE, CAMBIO_APELLIDO_PATERNO,
-         CAMBIO_APELLIDO_MATERNO, CAMBIO_EDAD } from '../types/usuariosTypes.js';
+         CAMBIO_APELLIDO_MATERNO, CAMBIO_EDAD, AGREGADO } from '../types/usuariosTypes.js';
 
 export const traerUsuarios = () => async (dispatch) => {
 
@@ -33,7 +33,7 @@ export const traerUnComentario = (id) => async (dispatch) => {
 	dispatch({ type: CARGANDO });
 
 	try{
-		const response = await axios.get(`https://jsonplaceholder.typicode.com/comments/${id}`);
+		const response = await axios.get(`https://g6-ch2.herokuapp.com/api/usuarios/red/${id}`);
 
 		dispatch({
 			type: CAMBIO_NOMBRE,
@@ -61,4 +61,33 @@ export const traerUnComentario = (id) => async (dispatch) => {
 			payload: error.message
 		});
 	}
+};
+
+export const agregar = (usuario) => async (dispatch) => {
+
+	dispatch({ type: CARGANDO });	
+	
+	try{
+		await axios.post('https://g6-ch2.herokuapp.com/api/usuarios/red', usuario);		
+
+		dispatch({
+			type: AGREGADO
+		});
+
+		console.log(4);
+
+		window.Materialize.toast(
+			'Guardado correctamente', 
+			1300
+		);		
+	}
+	catch(error){
+			
+		window.Materialize.toast(
+			'Problemas al guardar el usuario, intente de nuevo mas tarde', 
+			2000
+		);
+		dispatch({ type: ERROR });
+	}
+
 };
