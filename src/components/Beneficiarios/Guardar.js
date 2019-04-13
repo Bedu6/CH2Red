@@ -1,16 +1,15 @@
 import React,  { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, Icon, Button, Row } from 'react-materialize';
-import * as usuariosActions from '../../actions/usuariosActions';
-import { CAMBIO_NOMBRE, CAMBIO_APELLIDO_PATERNO,
-         CAMBIO_APELLIDO_MATERNO, CAMBIO_EDAD     } from '../../types/usuariosTypes';
+import * as beneficiariosActions from '../../actions/beneficiariosActions';
+import { CAMBIO_NOMBRE, CAMBIO_RELACION, CAMBIO_EDAD     } from '../../types/beneficiariosTypes';
 import Cargando from '../General/Cargando';
 
 class Guardar extends Component {
 
 	componentDidMount() {
 		if(this.props.match.params.id)
-			this.props.traerUsuario(this.props.match.params.id);
+			this.props.traerBeneficiario(this.props.match.params.id);
 		else {
 			this.props.cambioInput(CAMBIO_NOMBRE, '');
 			this.props.cambioInput(CAMBIO_APELLIDO_PATERNO	, '');
@@ -26,20 +25,17 @@ class Guardar extends Component {
 	
 
 	localGuardar = (event) => {
-		const usuario = {
+		const beneficiario = {
 			nombre: this.props.nombre,
-			pellidos: {
-				paterno: this.props.apellido_paterno,
-				materno: this.props.apellido_materno
-			},
+			relacion: this.props.relacion,
 			edad: this.props.edad
 		}
 
 		const id = this.props.match.params.id
 		if(id)
-		   this.props.editar(usuario, id);
+		   this.props.editar(beneficiario, id);
 		else
-			this.props.agregar(usuario);
+			this.props.agregar(beneficiario);
 	};
 
 	render() {
@@ -59,23 +55,14 @@ class Guardar extends Component {
 
 					<Input
 						s={6}
-						label="Apellido paterno"
-						value={ this.props.apellido_paterno }
+						label="Relacion"
+						value={ this.props.relacion }
 						onChange={
-							(event) => this.localCambioInput(event, CAMBIO_APELLIDO_PATERNO)
+							(event) => this.localCambioInput(event, CAMBIO_RELACION)
 						}
 					>
 					</Input>
 
-					<Input
-						s={6}
-						label="Apellido materno"
-						value={ this.props.apellido_materno }
-						onChange={
-							(event) => this.localCambioInput(event, CAMBIO_APELLIDO_MATERNO)
-						}
-					>
-					</Input>
 
 					<Input
 						s={6}
@@ -98,6 +85,6 @@ class Guardar extends Component {
 	}	
 };
 
-const mapStateToProps = ({ usuariosReducer }) => usuariosReducer;
+const mapStateToProps = ({ beneficiariosReducer }) => beneficiariosReducer;
 
-export default connect(mapStateToProps, usuariosActions)(Guardar);
+export default connect(mapStateToProps, beneficiariosActions)(Guardar);
