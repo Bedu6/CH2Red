@@ -50,7 +50,7 @@ class index extends Component {
     return (
       <div> 
       	<div className="flex align_center">
-	      	<h2>beneficiarios</h2>     	
+	      	<h2>Dependientes</h2>     	
 	        <Link 
 	        	icon="add" 
 	        	to="/beneficiarios/guardar" 

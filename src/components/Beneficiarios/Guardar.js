@@ -12,8 +12,7 @@ class Guardar extends Component {
 			this.props.traerBeneficiario(this.props.match.params.id);
 		else {
 			this.props.cambioInput(CAMBIO_NOMBRE, '');
-			this.props.cambioInput(CAMBIO_APELLIDO_PATERNO	, '');
-			this.props.cambioInput(CAMBIO_APELLIDO_MATERNO	, '');
+			this.props.cambioInput(CAMBIO_RELACION	, '');
 			this.props.cambioInput(CAMBIO_EDAD	, '');
 		}
 	}
