@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as beneficiariosActions from '../../actions/beneficiariosActions';
 import Cargando from '../General/Cargando.js';
-import Tabla from '../Tabla.js';
+import Hola from '../Beneficiarios/Hola';
 import Fatal from '../General/Fatal.js';
 import { Button, Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,6 @@ class index extends Component {
 		if(!this.props.beneficiarios.length)
 			this.props.traerBeneficiarios();
 	}
-
   	desplegar = () =>(
 	  this.props.beneficiarios.map((beneficiario, key) => (
 	   	<tr key={key}>
@@ -43,7 +42,7 @@ class index extends Component {
 		if(this.props.error)
 			return <Fatal mensaje={this.props.error} />;
 
-		return <Tabla desplegar={ this.desplegar() } />
+		return <Hola desplegar={ this.desplegar() } />
 	};
 
   render() {
