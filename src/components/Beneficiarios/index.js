@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as usuariosActions from '../../actions/usuariosActions';
+import * as beneficiariosActions from '../../actions/beneficiariosActions';
 import Cargando from '../General/Cargando.js';
-import Tabla from '../Tabla.js';
+import Hola from '../Beneficiarios/Hola';
 import Fatal from '../General/Fatal.js';
-import { Button, Icon, Modal } from 'react-materialize';
+import { Button, Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Guardar from './Guardar';
 
@@ -12,29 +12,21 @@ class index extends Component {
 
 	componentDidMount(){
 
-		if(!this.props.usuarios.length)
-			this.props.traerUsuarios();
+		if(!this.props.beneficiarios.length)
+			this.props.traerBeneficiarios();
 	}
-
   	desplegar = () =>(
-	  this.props.usuarios.map((usuario, key) => (
+	  this.props.beneficiarios.map((beneficiario, key) => (
 	   	<tr key={key}>
-	      <td>{ usuario.nombre }</td>
-	      <td>{ usuario.apellidos.paterno }</td>
-	      <td>{ usuario.apellidos.materno }</td>
-	      <td>{ usuario.edad }</td>
+	      <td>{ beneficiario.nombre }</td>
+	      <td>{ beneficiario.edad }</td>
 	      <td>
-	      	<Link to={`/beneficiarios/index/${usuario._id}`} >
-	      		<Icon>visibility</Icon>
-	      	</Link>
-	      </td>
-	      <td>
-	      	<Link to={`/usuarios/editar/${usuario._id}`} >
+	      	<Link to={`/beneficiarios/editar/${beneficiario._id}`} >
 	      		<Icon>edit</Icon>
 	      	</Link>
 	      </td>
 	      <td>
-	      	<Link to={`/usuarios/eliminar/${usuario._id}`} >
+	      	<Link to={`/beneficiarios/eliminar/${beneficiario._id}`} >
 	      		<Icon>delete</Icon>
 	      	</Link>
 	      </td>
@@ -50,17 +42,17 @@ class index extends Component {
 		if(this.props.error)
 			return <Fatal mensaje={this.props.error} />;
 
-		return <Tabla desplegar={ this.desplegar() } />
+		return <Hola desplegar={ this.desplegar() } />
 	};
 
   render() {
     return (
       <div> 
       	<div className="flex align_center">
-	      	<h2>Usuarios</h2>     	
+	      	<h2>Dependientes</h2>     	
 	        <Link 
 	        	icon="add" 
-	        	to="/usuarios/guardar" 
+	        	to="/beneficiarios/guardar" 
 	        	className="btn waves-effect waves-light btn-large btn-floating red ml">
 	      		
 	      		<i className="material-icons" >add</i>
@@ -75,6 +67,6 @@ class index extends Component {
   } //render
 } //Class
 
-const mapStateToProps = ({ usuariosReducer }) => usuariosReducer;
+const mapStateToProps = ({ beneficiariosReducer }) => beneficiariosReducer;
 
-export default connect(mapStateToProps, usuariosActions)(index);
+export default connect(mapStateToProps, beneficiariosActions)(index);
