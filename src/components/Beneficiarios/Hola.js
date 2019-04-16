@@ -1,13 +1,13 @@
 import React from 'react';
 import { Table } from 'react-materialize';
 
-const Tabla = (props) =>(
+const Hola = (props) =>(
 	<div>
 		<Table hoverable>
 		  <thead>
 		    <tr>
 		      <th>Nombre</th>
-		      <th>Relacion</th>					      
+		     				      
 		      <th>Edad</th>				      		
 		      <th>Editar</th>		
 		      <th>Eliminar</th>		
@@ -20,4 +20,4 @@ const Tabla = (props) =>(
 	</div>
 );
 
-export default Tabla;
+export default Hola;
