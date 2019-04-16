@@ -4,7 +4,7 @@ import * as usuariosActions from '../../actions/usuariosActions';
 import Cargando from '../General/Cargando.js';
 import Tabla from '../Tabla.js';
 import Fatal from '../General/Fatal.js';
-import { Button, Icon } from 'react-materialize';
+import { Button, Icon, Modal } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Guardar from './Guardar';
 
@@ -34,7 +34,7 @@ class index extends Component {
 	      	</Link>
 	      </td>
 	      <td>
-	      	<Link to={`/usuarios/editar/${usuario._id}`} >
+	      	<Link to={`/usuarios/eliminar/${usuario._id}`} >
 	      		<Icon>delete</Icon>
 	      	</Link>
 	      </td>

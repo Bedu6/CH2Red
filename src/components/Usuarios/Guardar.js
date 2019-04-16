@@ -9,8 +9,10 @@ import Cargando from '../General/Cargando';
 class Guardar extends Component {
 
 	componentDidMount() {
-		if(this.props.match.params.id)
-			this.props.traerUsuario(this.props.match.params.id);
+
+		if(this.props.match.params.id){		
+			this.props.traerUnUsuario(this.props.match.params.id);
+		}
 		else {
 			this.props.cambioInput(CAMBIO_NOMBRE, '');
 			this.props.cambioInput(CAMBIO_APELLIDO_PATERNO	, '');
@@ -23,9 +25,8 @@ class Guardar extends Component {
 		this.props.cambioInput(caso, event.target.value);
 	};
 
-	
-
 	localGuardar = (event) => {
+
 		const usuario = {
 			nombre: this.props.nombre,
 			pellidos: {
@@ -36,6 +37,7 @@ class Guardar extends Component {
 		}
 
 		const id = this.props.match.params.id
+
 		if(id)
 		   this.props.editar(usuario, id);
 		else
