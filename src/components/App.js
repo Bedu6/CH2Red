@@ -19,7 +19,7 @@ class App extends Component {
                 <Route exact path='/usuarios/guardar' component={UsuariosGuardar} />
                 <Route exact path='/usuarios/editar/:id' component={UsuariosGuardar} />
                 <Route exact path='/beneficiarios/index/:id' component={Beneficiarios} />
-                <Route exact path='/beneficiarios/guardar' component={BeneficiariosGuardar} />
+                <Route exact path='/beneficiarios/guardar/:usuario_id' component={BeneficiariosGuardar} />
               </div>
            </div>
          </BrowserRouter>

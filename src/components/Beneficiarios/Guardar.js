@@ -2,12 +2,16 @@ import React,  { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, Icon, Button, Row } from 'react-materialize';
 import * as beneficiariosActions from '../../actions/beneficiariosActions';
-import { CAMBIO_NOMBRE, CAMBIO_RELACION, CAMBIO_EDAD     } from '../../types/beneficiariosTypes';
+import { CAMBIO_NOMBRE, CAMBIO_RELACION, CAMBIO_EDAD, 
+		 USUARIO_ID} from '../../types/beneficiariosTypes';
 import Cargando from '../General/Cargando';
 
 class Guardar extends Component {
 
 	componentDidMount() {
+
+		console.log(this.props.match.params.usuario_id);
+
 		if(this.props.match.params.id)
 			this.props.traerBeneficiario(this.props.match.params.id);
 		else {
@@ -25,9 +29,10 @@ class Guardar extends Component {
 
 	localGuardar = (event) => {
 		const beneficiario = {
-			nombre: this.props.nombre,
-			relacion: this.props.relacion,
-			edad: this.props.edad
+			nombre_completo: this.props.nombre,
+			dependencia: this.props.relacion,
+			edad: this.props.edad,
+			"_usuario": this.props.match.params.usuario_id
 		}
 
 		const id = this.props.match.params.id
