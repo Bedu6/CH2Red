@@ -1,5 +1,5 @@
 import { TRAER_BENEFICIARIOS, ERROR, CARGANDO, CAMBIO_NOMBRE, CAMBIO_RELACION, 
-    CAMBIO_EDAD, AGREGADO, EDITADO } from '../types/beneficiariosTypes.js';
+    CAMBIO_EDAD, AGREGADO, EDITADO, USUARIO_ID } from '../types/beneficiariosTypes.js';
    
    const INITIAL_STATE = {
      beneficiarios: [],
@@ -7,7 +7,8 @@ import { TRAER_BENEFICIARIOS, ERROR, CARGANDO, CAMBIO_NOMBRE, CAMBIO_RELACION,
      error: '',
      nombre: '',
      relacion: '',  
-     edad: ''
+     edad: '',
+     usuario_id: ''
    };
    
    export default (state = INITIAL_STATE, action) =>{
@@ -37,6 +38,9 @@ import { TRAER_BENEFICIARIOS, ERROR, CARGANDO, CAMBIO_NOMBRE, CAMBIO_RELACION,
    
         case EDITADO:
             return{ ...state, cargando: false, beneficiarios: []};
+
+        case USUARIO_ID:
+            return{ ...state, usuario_id: action.payload, cargando: false};
         
         default: return state;
      }

@@ -29,3 +29,7 @@ a,link{
 .btn_guardar{
 	background: green;
 }
+
+.btn_regresar{
+	display: none;
+}

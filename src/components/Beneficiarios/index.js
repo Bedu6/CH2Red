@@ -11,14 +11,19 @@ import Guardar from './Guardar';
 class index extends Component {
 
 	componentDidMount(){
+		
+		if(this.props.match.params.id){		
+			this.props.traerUnUsuario(this.props.match.params.id);
+		}
 
-		if(!this.props.beneficiarios.length)
-			this.props.traerBeneficiarios();
+//		if(!this.props.beneficiarios.length)
+			this.props.traerBeneficiarios(this.props.match.params.id);
 	}
+
   	desplegar = () =>(
 	  this.props.beneficiarios.map((beneficiario, key) => (
 	   	<tr key={key}>
-	      <td>{ beneficiario.nombre }</td>
+	      <td>{ beneficiario.nombre_completo }</td>
 	      <td>{ beneficiario.edad }</td>
 	      <td>
 	      	<Link to={`/beneficiarios/editar/${beneficiario._id}`} >
@@ -48,11 +53,12 @@ class index extends Component {
   render() {
     return (
       <div> 
+      	<h2>{this.props.nombre}</h2> 
       	<div className="flex align_center">
 	      	<h2>Dependientes</h2>     	
 	        <Link 
 	        	icon="add" 
-	        	to="/beneficiarios/guardar" 
+	        	to={`/beneficiarios/guardar/${this.props.match.params.id}`} 
 	        	className="btn waves-effect waves-light btn-large btn-floating red ml">
 	      		
 	      		<i className="material-icons" >add</i>
