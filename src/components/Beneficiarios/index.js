@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as beneficiariosActions from '../../actions/beneficiariosActions';
 import Cargando from '../General/Cargando.js';
-import Hola from '../Beneficiarios/Hola';
+import Tarjeta from './Tarjeta';
 import Fatal from '../General/Fatal.js';
-import { Button, Icon } from 'react-materialize';
+import { Icon, Col, Row, Card } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Guardar from './Guardar';
 
@@ -21,8 +21,8 @@ class index extends Component {
 	}
 
   	desplegar = () =>(
-	  this.props.beneficiarios.map((beneficiario, key) => (
-	   	<tr key={key}>
+	  this.props.beneficiarios.map((beneficiario, key) => (		
+				<tr key={key}>
 	      <td>{ beneficiario.nombre_completo }</td>
 	      <td>{ beneficiario.edad }</td>
 	      <td>
@@ -47,7 +47,7 @@ class index extends Component {
 		if(this.props.error)
 			return <Fatal mensaje={this.props.error} />;
 
-		return <Hola desplegar={ this.desplegar() } />
+		return <Tarjeta desplegar={ this.desplegar() } />
 	};
 
   render() {

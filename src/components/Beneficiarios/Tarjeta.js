@@ -1,23 +1,22 @@
 import React from 'react';
-import { Table } from 'react-materialize';
+import { Table, Row, Col, Card } from 'react-materialize';
 
-const Hola = (props) =>(
-	<div>
+const Tarjeta = (props) =>(
+	<div>	
 		<Table hoverable>
 		  <thead>
 		    <tr>
-		      <th>Nombre</th>
-		     				      
+		      <th>Nombre</th>		      
 		      <th>Edad</th>				      		
 		      <th>Editar</th>		
 		      <th>Eliminar</th>		
 		    </tr>
 		  </thead>
 		   <tbody>
-		    { props.desplegar }
+			 { props.desplegar }
 		  </tbody>
 		</Table>
 	</div>
 );
 
-export default Hola;
+export default Tarjeta;
