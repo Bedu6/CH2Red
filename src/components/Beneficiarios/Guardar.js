@@ -10,11 +10,12 @@ class Guardar extends Component {
 
 	componentDidMount() {
 
-		console.log(this.props.match.params.usuario_id);
-
-		if(this.props.match.params.id)
-			this.props.traerBeneficiario(this.props.match.params.id);
+		if(this.props.match.params.id){
+			console.log("editar");
+			this.props.tarerUnBeneficiario(this.props.match.params.id);
+		}
 		else {
+			console.log("nuevo");
 			this.props.cambioInput(CAMBIO_NOMBRE, '');
 			this.props.cambioInput(CAMBIO_RELACION	, '');
 			this.props.cambioInput(CAMBIO_EDAD	, '');
@@ -28,7 +29,8 @@ class Guardar extends Component {
 	
 
 	localGuardar = (event) => {
-		const beneficiario = {
+		const beneficiario = 
+		{
 			nombre_completo: this.props.nombre,
 			dependencia: this.props.relacion,
 			edad: this.props.edad,
@@ -45,7 +47,6 @@ class Guardar extends Component {
 	render() {
 		return (
 			<div>
-				<br />
 				<div className='row'>
 					<Input
 						s={6}

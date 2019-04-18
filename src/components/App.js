@@ -21,7 +21,7 @@ class App extends Component {
                 <Route exact path='/usuarios/eliminar/:id' component={UsuariosGuardar} />
                 <Route exact path='/beneficiarios/index/:id' component={Beneficiarios} />
                 <Route exact path='/beneficiarios/guardar/:usuario_id' component={BeneficiariosGuardar} />
-                <Route exact path='/beneficiarios/editar/:usuario_id' component={BeneficiariosGuardar} />
+                <Route exact path='/beneficiarios/editar/:id' component={BeneficiariosGuardar} />
               </div>
            </div>
          </BrowserRouter>
