@@ -118,3 +118,26 @@ export const editar = (usuario, id) => async (dispatch) => {
 	}
 
 };
+
+
+export const eliminar = (id) => async (dispatch) => {
+
+	dispatch({ type: CARGANDO });
+	
+	try{
+		await axios.put(`https://g6-ch2.herokuapp.com/api/usuarios/red/${id}`);
+
+		window.Materialize.toast(
+			'Eliminado correctamente', 
+			1300
+		);
+	}
+	catch(error){
+		window.Materialize.toast(
+			'Problemas al eliminar usuario, intente de nuevo mas tarde', 
+			2000
+		);
+		dispatch({ type: ERROR });
+	}
+
+};
