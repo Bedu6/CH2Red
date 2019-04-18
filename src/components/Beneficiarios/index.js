@@ -23,15 +23,19 @@ class index extends Component {
   	desplegar = () =>(
 	  this.props.beneficiarios.map((beneficiario, key) => (	
 
-			<Row>
-				<Col m={6} s={12}>
+				<Row>
+				<Col s={6} m={4}>
 					<Card
-						className="blue-grey darken-1"
-						textClassName="white-text"
+						key={key}
+						className="white"
+						textClassName="black-text"
 						title={ beneficiario.nombre_completo }
 						
 					>
 					Edad: { beneficiario.edad }
+					<br/>
+					Relacion: { beneficiario.dependencia }
+					<br/>
 					<Link to={`/beneficiarios/editar/${beneficiario._id}`} >
 	      		<Icon>edit</Icon>
 	      	</Link>
@@ -60,7 +64,7 @@ class index extends Component {
 	  ))
 	);
 
-	eliminarBeneficiario = () => {
+	eliminarBeneficiario = () => (
 		/*let andy = window.confirm("Eliminar");
 		let msg;
 		if(andy) {
@@ -68,12 +72,12 @@ class index extends Component {
 		}
 
 		alert(msg);*/
-		/*<Modal header="Modal Header" trigger={<Button />}>
+		<Modal header="Modal Header" trigger={<Button />}>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 			</p>
-	  </Modal>*/
-	};
+	  </Modal>
+	);
 
 
 	ponerContenido = () => {
