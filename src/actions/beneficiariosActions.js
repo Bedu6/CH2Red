@@ -83,25 +83,27 @@ export const agregar = (beneficiario) => async (dispatch) => {
 
 };
 
-/*xport const traerUnComentario = (id) => async (dispatch) => {
+export const tarerUnBeneficiario = (id) => async (dispatch) => {
 	dispatch({ type: CARGANDO });
 
 	try{
 		const response = await axios.get(`https://g6-ch2.herokuapp.com/api/dependientes/red/${id}`);
 
+		console.log(response);
+
 		dispatch({
 			type: CAMBIO_NOMBRE,
-			payload: response.data.nombre
+			payload: response.data[0].nombre_completo
 		});
 
 		dispatch({
 			type: CAMBIO_RELACION,
-			payload: response.data.relacion
+			payload: response.data[0].dependencia
 		});
 
 		dispatch({
 			type: CAMBIO_EDAD,
-			payload: response.data.edad
+			payload: response.data[0].edad
 		});
 	}
 	catch(error){
@@ -112,4 +114,3 @@ export const agregar = (beneficiario) => async (dispatch) => {
 	}
 };
 
-*/

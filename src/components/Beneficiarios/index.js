@@ -4,7 +4,7 @@ import * as beneficiariosActions from '../../actions/beneficiariosActions';
 import Cargando from '../General/Cargando.js';
 import Tarjeta from './Tarjeta';
 import Fatal from '../General/Fatal.js';
-import { Icon, Col, Row, Card } from 'react-materialize';
+import { Icon, Col, Row, Card, Button, Modal } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Guardar from './Guardar';
 
@@ -31,13 +31,29 @@ class index extends Component {
 	      	</Link>
 	      </td>
 	      <td>
-	      	<Link to={`/beneficiarios/eliminar/${beneficiario._id}`} >
-	      		<Icon>delete</Icon>
-	      	</Link>
+	      	<a  onClick={ this.eliminarBeneficiario }>
+	      		<Icon>edit</Icon>
+	      	</a>
 	      </td>
 	    </tr>
 	  ))
 	);
+
+	eliminarBeneficiario = () => {
+		/*let andy = window.confirm("Eliminar");
+		let msg;
+		if(andy) {
+			msg = "Eliminado";
+		}
+
+		alert(msg);*/
+		/*<Modal header="Modal Header" trigger={<Button />}>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+			</p>
+	    </Modal>*/
+	};
+
 
 	ponerContenido = () => {
 		
