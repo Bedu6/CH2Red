@@ -32,7 +32,7 @@ class index extends Component {
 	      </td>
 	      <td>
 	      	<a  onClick={ this.eliminarBeneficiario }>
-	      		<Icon>edit</Icon>
+	      		<Icon>delete</Icon>
 	      	</a>
 	      </td>
 	    </tr>
@@ -47,11 +47,11 @@ class index extends Component {
 		}
 
 		alert(msg);*/
-		/*<Modal header="Modal Header" trigger={<Button />}>
-			<p>
+		<Modal header="Modal Header" trigger={<Button />}>
+			<p>	1AS
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 			</p>
-	    </Modal>*/
+	    </Modal>
 	};
 
 
