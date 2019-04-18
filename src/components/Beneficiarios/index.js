@@ -21,8 +21,29 @@ class index extends Component {
 	}
 
   	desplegar = () =>(
-	  this.props.beneficiarios.map((beneficiario, key) => (		
-				<tr key={key}>
+	  this.props.beneficiarios.map((beneficiario, key) => (	
+
+			<Row>
+				<Col m={6} s={12}>
+					<Card
+						className="blue-grey darken-1"
+						textClassName="white-text"
+						title={ beneficiario.nombre_completo }
+						
+					>
+					Edad: { beneficiario.edad }
+					<Link to={`/beneficiarios/editar/${beneficiario._id}`} >
+	      				<Icon>edit</Icon>
+	      			</Link>
+					<a  onClick={ this.eliminarBeneficiario }>
+			      		<Icon>delete</Icon>
+			      	</a>
+					</Card>
+				</Col>
+			</Row>
+			
+
+			/*	<tr key={key}>
 	      <td>{ beneficiario.nombre_completo }</td>
 	      <td>{ beneficiario.edad }</td>
 	      <td>
@@ -35,11 +56,18 @@ class index extends Component {
 	      		<Icon>delete</Icon>
 	      	</a>
 	      </td>
-	    </tr>
+	    </tr>*/
 	  ))
 	);
 
 	eliminarBeneficiario = () => {
+
+		let resp = window.confirm("¿Está seguro que desea eliminar el registro?");
+
+		if(resp) {
+			this.props.eliminarBeneficiario();
+		}	
+		
 		/*let andy = window.confirm("Eliminar");
 		let msg;
 		if(andy) {
@@ -47,11 +75,11 @@ class index extends Component {
 		}
 
 		alert(msg);*/
-		<Modal header="Modal Header" trigger={<Button />}>
+		/*<Modal header="Modal Header" trigger={<Button />}>
 			<p>	1AS
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 			</p>
-	    </Modal>
+	  	</Modal>*/
 	};
 
 

@@ -59,7 +59,7 @@ export const agregar = (beneficiario) => async (dispatch) => {
 	dispatch({ type: CARGANDO });	
 	
 	try{
-		await axios.post('https://g6-ch2.herokuapp.com/api/usuarios/red', beneficiario);		
+		await axios.post('https://g6-ch2.herokuapp.com/api/dependientes/red', beneficiario);		
 
 		dispatch({
 			type: AGREGADO
