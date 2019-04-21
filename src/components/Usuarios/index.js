@@ -34,9 +34,15 @@ class index extends Component {
 	      	</Link>
 	      </td>
 	      <td>
-	      	<Link to={`/usuarios/eliminar/${usuario._id}`} >
-	      		<Icon>delete</Icon>
-	      	</Link>
+      		<Link   onClick=
+					{
+						() =>{ 
+								this.props.eliminar(usuario._id); 
+							 } 
+					} 
+					to={'/'}>
+  				<Icon>delete</Icon>
+  			</Link>
 	      </td>
 	    </tr>
 	  ))
@@ -53,6 +59,7 @@ class index extends Component {
 		return <Tabla desplegar={ this.desplegar() } />
 	};
 
+
   render() {
     return (
       <div> 
@@ -63,7 +70,7 @@ class index extends Component {
 	        	to="/usuarios/guardar" 
 	        	className="btn waves-effect waves-light btn-large btn-floating red ml">
 	      		
-	      		<i className="material-icons" >add</i>
+	      		<i className="material-icons">add</i>
 	      	</Link>
       	</div>     
 
