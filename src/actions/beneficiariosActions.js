@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { TRAER_BENEFICIARIOS, ERROR, CARGANDO, CAMBIO_NOMBRE, CAMBIO_RELACION, 
-    CAMBIO_EDAD, AGREGADO, CAMBIO_APELLIDO_PATERNO, CAMBIO_APELLIDO_MATERNO, USUARIO_ID } from '../types/beneficiariosTypes.js';
+    CAMBIO_EDAD, AGREGADO, CAMBIO_APELLIDO_PATERNO, CAMBIO_APELLIDO_MATERNO, USUARIO_ID, EDITADO } from '../types/beneficiariosTypes.js';
 
 export const traerBeneficiarios = (id) => async (dispatch) => {
 
 	dispatch({ type: CARGANDO });
 
-	try{
-		///api/dependientes_usuario/nombre_equipo/usuario_id
+	try{	
 		const response = await axios.get(`https://g6-ch2.herokuapp.com/api/dependientes_usuario/red/${id}`);
 
 		dispatch({
@@ -52,9 +51,7 @@ export const traerUnUsuario = (id) => async (dispatch) => {
 };
 
 
-export const agregar = (beneficiario) => async (dispatch) => {
-
-	console.log(beneficiario);
+export const agregar = (beneficiario) => async (dispatch) => {	
 
 	dispatch({ type: CARGANDO });	
 	
@@ -63,9 +60,7 @@ export const agregar = (beneficiario) => async (dispatch) => {
 
 		dispatch({
 			type: AGREGADO
-		});
-
-		console.log(4);
+		});		
 
 		window.Materialize.toast(
 			'Guardado correctamente', 
@@ -87,9 +82,7 @@ export const tarerUnBeneficiario = (id) => async (dispatch) => {
 	dispatch({ type: CARGANDO });
 
 	try{
-		const response = await axios.get(`https://g6-ch2.herokuapp.com/api/dependientes/red/${id}`);
-
-		console.log(response);
+		const response = await axios.get(`https://g6-ch2.herokuapp.com/api/dependientes/red/${id}`);		
 
 		dispatch({
 			type: CAMBIO_NOMBRE,
@@ -114,3 +107,47 @@ export const tarerUnBeneficiario = (id) => async (dispatch) => {
 	}
 };
 
+export const eliminar = (id) => async (dispatch) => {
+	
+	try{
+		await axios.delete(`https://g6-ch2.herokuapp.com/api/dependientes/red/${id}`);
+
+		window.Materialize.toast(
+			'Eliminado correctamente', 
+			1300
+		);
+	}
+	catch(error){
+		window.Materialize.toast(
+			'Problemas al eliminar el dependiente, intente de nuevo mas tarde', 
+			2000
+		);
+		dispatch({ type: ERROR });
+	}
+
+};
+
+
+export const editar = (dependiente, id) => async (dispatch) => {
+
+	dispatch({ type: CARGANDO });
+	
+	try{
+		await axios.post(`https://g6-ch2.herokuapp.com/api/dependientes/red/${id}`, dependiente);
+
+		dispatch({ type: EDITADO });
+
+		window.Materialize.toast(
+			'Editado correctamente', 
+			1300
+		);
+	}
+	catch(error){
+		window.Materialize.toast(
+			'Problemas al editar el dependiente, intente de nuevo mas tarde', 
+			2000
+		);
+		dispatch({ type: ERROR });
+	}
+
+};

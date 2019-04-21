@@ -68,13 +68,10 @@ export const agregar = (usuario) => async (dispatch) => {
 
 	dispatch({ type: CARGANDO });	
 	
-	try{
-
-		console.log(usuario);
+	try{		
 
 		const resp = await axios.post('https://g6-ch2.herokuapp.com/api/usuarios/red', usuario);		
-		console.log(resp);
-
+		
 		dispatch({
 			type: AGREGADO
 		});		
@@ -84,8 +81,7 @@ export const agregar = (usuario) => async (dispatch) => {
 			1300
 		);		
 	}
-	catch(error){
-		console.log(error.message);
+	catch(error){		
 		window.Materialize.toast(
 			'Problemas al guardar el usuario, intente de nuevo mas tarde', 
 			2000
@@ -100,7 +96,7 @@ export const editar = (usuario, id) => async (dispatch) => {
 	dispatch({ type: CARGANDO });
 	
 	try{
-		await axios.put(`https://g6-ch2.herokuapp.com/api/usuarios/red/${id}`, usuario);
+		await axios.post(`https://g6-ch2.herokuapp.com/api/usuarios/red/${id}`, usuario);
 
 		dispatch({ type: EDITADO });
 
@@ -111,7 +107,7 @@ export const editar = (usuario, id) => async (dispatch) => {
 	}
 	catch(error){
 		window.Materialize.toast(
-			'Problemas al editar su comentario, intente de nuevo mas tarde', 
+			'Problemas al editar el usuario, intente de nuevo mas tarde', 
 			2000
 		);
 		dispatch({ type: ERROR });
@@ -122,10 +118,8 @@ export const editar = (usuario, id) => async (dispatch) => {
 
 export const eliminar = (id) => async (dispatch) => {
 
-	dispatch({ type: CARGANDO });
-	
 	try{
-		await axios.put(`https://g6-ch2.herokuapp.com/api/usuarios/red/${id}`);
+		await axios.delete(`https://g6-ch2.herokuapp.com/api/usuarios/red/${id}`);
 
 		window.Materialize.toast(
 			'Eliminado correctamente', 

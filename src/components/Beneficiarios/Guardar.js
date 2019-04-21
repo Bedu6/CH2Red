@@ -10,12 +10,10 @@ class Guardar extends Component {
 
 	componentDidMount() {
 
-		if(this.props.match.params.id){
-			console.log("editar");
+		if(this.props.match.params.id){			
 			this.props.tarerUnBeneficiario(this.props.match.params.id);
 		}
-		else {
-			console.log("nuevo");
+		else {			
 			this.props.cambioInput(CAMBIO_NOMBRE, '');
 			this.props.cambioInput(CAMBIO_RELACION	, '');
 			this.props.cambioInput(CAMBIO_EDAD	, '');
@@ -25,8 +23,6 @@ class Guardar extends Component {
 	localCambioInput = (event, caso) => {
 		this.props.cambioInput(caso, event.target.value);
 	};
-
-	
 
 	localGuardar = (event) => {
 		const beneficiario = 
@@ -79,8 +75,10 @@ class Guardar extends Component {
 					>
 					</Input>
 				</div>
-				<div className="flex justify_center">
-					<Button className="btn btn_cancelar mr">Cancelar</Button>
+				<div className="flex justify_center">				
+					<a className="btn btn_cancelar mr" href={'/'}>
+						Cancelar
+					</a>	
 					<Button className="btn btn_guardar" onClick={ this.localGuardar } >Guardar</Button>
 				</div>
 

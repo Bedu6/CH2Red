@@ -90,7 +90,9 @@ class Guardar extends Component {
 					</Input>
 				</div>
 				<div className="flex justify_center">
-					<Button className="btn btn_cancelar mr">Cancelar</Button>
+					<a className="btn btn_cancelar mr" href="/">
+						Cancelar
+					</a>					
 					<Button className="btn btn_guardar" onClick={ this.localGuardar } >Guardar</Button>
 				</div>
 
