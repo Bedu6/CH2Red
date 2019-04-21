@@ -23,10 +23,9 @@ class index extends Component {
   	desplegar = () =>(
 	  this.props.beneficiarios.map((beneficiario, key) => (	
 
-				<Row>
+				<Row key={key}>
 				<Col s={6} m={4}>
 					<Card
-						key={key}
 						className="white"
 						textClassName="black-text"
 						title={ beneficiario.nombre_completo }
@@ -39,7 +38,7 @@ class index extends Component {
 					<Link to={`/beneficiarios/editar/${beneficiario._id}`} >
 	      				<Icon>edit</Icon>
 	      			</Link>
-					<a  onClick={ this.eliminarBeneficiario }>
+					<a onClick={ this.eliminarBeneficiario }>
 			      		<Icon>delete</Icon>
 			      	</a>
 					</Card>
@@ -61,25 +60,29 @@ class index extends Component {
 	      	</a>
 	      </td>
 	    </tr>*/
-	  ))
-	);
 
-
-	eliminarBeneficiario = () => (
-		/*let andy = window.confirm("Eliminar");
+	    		/*let andy = window.confirm("Eliminar");
 		let msg;
 		if(andy) {
 			msg = "Eliminado";
 		}
 
-		alert(msg);*/
+		alert(msg);*/		
 
-		<Modal header="Modal Header" trigger={<Button />}>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-			</p>
-	  </Modal>
+	  ))
 	);
+
+
+	eliminarBeneficiario = () => {
+
+		return (
+			<Modal header="Modal Header" >
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+				</p>
+		    </Modal>
+	    )
+	};
 
 
 
