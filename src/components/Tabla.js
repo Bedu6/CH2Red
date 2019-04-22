@@ -15,7 +15,8 @@ const Tabla = (props) =>(
 		      <th>Eliminar</th>		
 		    </tr>
 		  </thead>
-		  <tbody>
+		   <tbody>
+		    { props.desplegar }
 		  </tbody>
 		</Table>
 	</div>

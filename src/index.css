@@ -21,3 +21,15 @@
 a,link{
 	cursor: pointer;
 }
+
+.btn_cancelar{
+	background: red;
+}
+
+.btn_guardar{
+	background: green;
+}
+
+.btn_regresar{
+	display: none;
+}
